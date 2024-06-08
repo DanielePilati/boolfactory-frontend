@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Richiesta preventivo</title>
+    <!-- bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- /bootstrap css -->
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- navbar -->
+      <nav class="navbar bg-dark navbar-expand-md" data-bs-theme="dark">
+        <div class="container align-content-center">
+          <!-- logo -->
+          <a class="navbar-brand" href="#">Bool Factory</a>
+          <!-- /logo -->
+          <!-- smartphone button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- /smartphone button -->
+          <!-- menu -->
+          <div
+            class="md-row justify-content-end collapse navbar-collapse"
+            id="navbarNavAltMarkup"
+          >
+            <div class="navbar-nav">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#">Servizi</a>
+              <a class="nav-link" href="#">Contatti</a>
+            </div>
+          </div>
+          <!-- /menu -->
+        </div>
+      </nav>
+      <!-- /navbar -->
+    </header>
+    <!-- /header -->
+    <!-- main -->
+    <main>
+      <div class="container align-content-center mt-4">
+        <div class="row">
+          <!-- form col-->
+          <div class="col-12 col-lg-8">
+            <!-- description-->
+            <div>
+              <h1>Richiesta Preventivo</h1>
+              <h5>
+                Compila il form per richiedere un preventivo per i nostri
+                servizi di sviluppo
+              </h5>
+            </div>
+            <!-- /description-->
+            <!-- form -->
+            <form id="preventive-form" class="row mb-5" method="GET">
+              <!-- input name-->
+              <div class="col-12 mb-3">
+                <label for="name-input" class="form-label">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name-input"
+                  name="username"
+                />
+              </div>
+              <!-- /input name-->
+              <!-- input surname-->
+              <div class="col-12 mb-3">
+                <label for="surname-input" class="form-label">Cognome</label>
+                <input type="text" class="form-control" id="surname-input" />
+              </div>
+              <!-- /input surname-->
+              <!-- input email-->
+              <div class="col-12 mb-3">
+                <label for="email-input" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email-input" />
+              </div>
+              <!-- /input email-->
+              <!-- input selection-->
+              <div class="col-12 mb-3">
+                <label for="selection-input" class="form-label"
+                  >Tipo di Lavoro</label
+                >
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  id="selection-input"
+                >
+                  <!-- removed and popolated with js -->
+                </select>
+                <div class="form-text text-danger" id="wrong-select"></div>
+              </div>
+              <!-- /input selection-->
+              <!-- input text note-->
+              <div class="col-12 mb-3">
+                <label for="text-area" class="form-label">Inserisci Note</label>
+                <div class="form-floating mb-3">
+                  <textarea
+                    class="form-control"
+                    placeholder="Leave a comment here"
+                    id="text-area"
+                    style="height: 100px"
+                  ></textarea>
+                </div>
+              </div>
+              <!-- /input text note-->
+              <!-- promo code-->
+              <div class="col-12 mb-3">
+                <label for="promo-code" class="form-label"
+                  >Codice Promozionale (opzionale)</label
+                >
+                <input type="text" class="form-control" id="promo-code" />
+                <div class="form-text text-danger" id="wrong-code"></div>
+              </div>
+              <!-- /promo code-->
+              <!-- privacy check-->
+              <div class="col-12 form-check mb-3 ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="privacy-check"
+                />
+                <label class="form-check-label" for="privacy-check">
+                  Accetto la Privacy Policy
+                </label>
+              </div>
+              <!-- /privacy check-->
+              <!-- submit button-->
+              <div class="col-12 col-md-6 text-center p-4">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  hx-post="/greet"
+                  hx-target="#greeting"
+                  hx-include="#name"
+                >
+                  Calcola preventivo
+                </button>
+              </div>
+              <!-- /submit button-->
+              <!-- final price-->
+              <div
+                id="price-banner"
+                class="col-12 col-md-6 text-center p-4 d-none"
+              >
+                <h4>Prezzo finale</h4>
+                <span class="fs-3" id="price-int"></span>
+                <span class="fs-4 text-body-tertiary" id="price-floats"></span>
+              </div>
+              <!-- //final price-->
+            </form>
+            <!-- /form -->
+          </div>
+          <!-- /form col -->
+          <!-- cards -->
+          <div class="container col-12 col-lg-4 mb-3">
+            <!-- contact card-->
+            <div class="card">
+              <!-- image -->
+              <img
+                src="img/300x200.png"
+                alt="contacts-image"
+                class="card-img-top"
+              />
+              <!-- /image -->
+              <!-- info text -->
+              <div class="card-body">
+                <h5 class="card-title">Inostri contatti</h5>
+                <h6 class="card-text">
+                  Se hai bisogno di aiuto puoi contattarci:
+                </h6>
+              </div>
+              <!-- /info text -->
+              <!-- contacts  -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">help@boolfactory.test</li>
+                <li class="list-group-item">+1122334455</li>
+              </ul>
+              <!-- /contacts  -->
+              <!-- link -->
+              <div class="card-body">
+                <a href="#" class="card-link">Help Desk</a>
+              </div>
+              <!-- /link -->
+            </div>
+            <!-- /contact card-->
+          </div>
+          <!-- /cards -->
+        </div>
+      </div>
+    </main>
+    <!-- /main -->
+    <!-- footer-->
+    <footer>
+      <div class="bg-dark text-white text-center pt-3 pb-4">
+        &copy; 2024 - Tutti i diritti riservati
+      </div>
+    </footer>
+    <!-- /footer -->
+    <!-- bootstrap js-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- /bootstrap js-->
+    <!-- main js-->
+    <script src="js/main.js"></script>
+    <!-- /main js-->
+  </body>
+</html>
